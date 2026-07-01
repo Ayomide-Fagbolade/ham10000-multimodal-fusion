@@ -240,3 +240,22 @@ The ensemble evaluation was performed by combining the predictions of the baseli
 | **mel** | 1 | 0 | 5 | 0 | 82 | 21 | 2 |
 | **nv** | 2 | 7 | 14 | 0 | 31 | 609 | 3 |
 | **vasc** | 0 | 0 | 0 | 0 | 0 | 0 | 14 |
+
+## 6. Final Model Selection
+
+Using macro-F1 as the primary optimization metric, the image-only baseline is marginally the best model, with macro-F1 = 80.42% compared with 80.41% for the multimodal fusion model and 80.22% for the validation-selected ensemble. However, the difference between baseline and fusion is only 0.01 percentage points and is therefore practically negligible.
+
+The fusion model provides the strongest clinical trade-off. It preserves macro-F1 while improving accuracy, weighted F1, balanced accuracy, and most importantly melanoma recall. Melanoma recall increases from 69.37% to 77.48%, meaning 9 additional melanoma cases are correctly identified on the held-out test set. This improvement comes at the cost of a small increase in benign lesions, especially nevi, being classified as melanoma.
+
+The validation-selected ensemble achieved the highest accuracy at 87.05%, but its macro-F1 of 80.22% is lower than both individual models. Therefore, the ensemble is not selected as the final model under the macro-F1 criterion. It is best interpreted as an accuracy-improving variant rather than a macro-F1-improving model.
+
+Overall, if strict metric selection is required, the baseline is the best model by macro-F1. However in clinical screening utility is prioritized, the multimodal fusion model is preferable because it substantially improves melanoma sensitivity while maintaining nearly identical macro-F1.
+
+| Metric | Baseline | Fusion | Ensemble | Best |
+|---|---:|---:|---:|---|
+| Accuracy | 86.65% | 86.95% | **87.05%** | Ensemble |
+| Macro F1 | **80.42%** | 80.41% | 80.22% | Baseline |
+| Weighted F1 | 86.79% | **87.26%** | 87.24% | Fusion |
+| Balanced Accuracy | 83.42% | **84.04%** | 83.52% | Fusion |
+| Melanoma Recall | 69.37% | **77.48%** | 73.87% | Fusion |
+| Melanoma F1 | 66.38% | **69.64%** | 68.91% | Fusion |
