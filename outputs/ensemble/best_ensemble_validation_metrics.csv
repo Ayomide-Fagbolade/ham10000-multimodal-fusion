@@ -1,0 +1,7 @@
+metric,value
+w4_fusion,0.55
+w5_fusion,0.5
+val_accuracy,0.878514
+val_macro_f1,0.837554
+val_weighted_f1,0.879745
+val_balanced_accuracy,0.834662
